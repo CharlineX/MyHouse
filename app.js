@@ -31,19 +31,20 @@ import "babel-polyfill";
 function l(){
 	return console.log.apply(console,arguments);
 }
-l(12,console);
+// l(12,console);
 
-function log(){
-	return console.log(...arguments);
-}
-log(1,2,3);
-
-// Array.prototype.s=function(){
-// 	return this.splice(...arguments);
+// function log(){
+// 	return console.log(...arguments);
 // }
-// l(1,2,3).splice(1,2,"a","b");
-// l(1,2,3).s(1,2,"a","b");
+// log(1,2,3);
 
-Object.keys=function(){
-	return keys(...arguments);
+Array.prototype.s=function(){
+	return this.splice(...arguments);
 }
+l([1,2,3].splice(1,2,"a","b"));
+l([1,2,3].s(1,2,"a","b"));
+
+// Object.k=function(){
+// 	return this.keys(...arguments);
+// }
+// l(Object.k({a:123,b:45}));
