@@ -1,6 +1,7 @@
 require("babel-register")({
 	presets:[
-		"latest"
+		"latest",
+		"stage-0"
 	]
 });
 require("./app");
