@@ -1,40 +1,49 @@
-// import "babel-polyfill";
-// import obj,{A,B,C} from "./controller";
+import "babel-polyfill";
+import express from "express";
+import router from "./controller";
+import {SERVER_CONFIG} from "./config";
+import {l,createHTML} from "./utils";
+express()
+	.use(express.static("./static"))
+	.use(express.static("./dev/dist"))
+	.use(router)
+	.listen(SERVER_CONFIG.port);
 
-function l(){
-	return console.log(...arguments);
-}
-var getJson = (url,{method,headers,body})=>{
-	var promise = new Promise((resolve,reject)=>{
-		const xhr =new XMLHttpRequest;
-		xhr.onreadystatechange=()=>{
-			if(xhr.readyState===4){
-				if(xhr.status===200){
-					resolve(JSON.parse(xhr.responseText));
-				}else{
-					reject(new Error(xhr.responseText))
-				}
-			}
-		};
-		xhr.open(method,url,1);
-		for(let i in headers){
-			xhr.setRequestHeader(i,headers[i])
-		}
-		xhr.send(method === "get" ? null : body);
-});
-	return promise;
-}
-getJson("/api/test/get",{
-	method:"get",
-	headers:{
-		"Content-Type":"text/plain"
-	},
-	body:"len=2"
-}).then(date=>{
-	l(date)
-}).catch(err=>{
-	l(err)
-})
+// function l(){
+// 	return console.log(...arguments);
+// }
+
+// var getJson = (url,{method,headers,body})=>{
+// 	var promise = new Promise((resolve,reject)=>{
+// 		const xhr =new XMLHttpRequest;
+// 		xhr.onreadystatechange=()=>{
+// 			if(xhr.readyState===4){
+// 				if(xhr.status===200){
+// 					resolve(JSON.parse(xhr.responseText));
+// 				}else{
+// 					reject(new Error(xhr.responseText))
+// 				}
+// 			}
+// 		};
+// 		xhr.open(method,url,1);
+// 		for(let i in headers){
+// 			xhr.setRequestHeader(i,headers[i])
+// 		}
+// 		xhr.send(method === "get" ? null : body);
+// });
+// 	return promise;
+// }
+// getJson("/api/test/get",{
+// 	method:"get",
+// 	headers:{
+// 		"Content-Type":"text/plain"
+// 	},
+// 	body:"len=2"
+// }).then(date=>{
+// 	l(date)
+// }).catch(err=>{
+// 	l(err)
+// })
 // l(A);
 // l(obj.b());
 // B(23344);
@@ -73,7 +82,7 @@ getJson("/api/test/get",{
 // }
 // l0(12,console);
 
-
+// import obj,{A,B,C} from "./controller";
 // log(1,2,3);
 
 // Array.prototype.s=function(){
@@ -92,12 +101,12 @@ getJson("/api/test/get",{
 // }
 // a();
 
-let obj={
-	a:1,
-	b:function(){
-		l(this.a);
-	}
-}
+// let obj={
+// 	a:1,
+// 	b:function(){
+// 		l(this.a);
+// 	}
+// }
 // obj.b();
 
 // const show=([a,...rest1],{b,...rest2},c=0,...rest3)=>{

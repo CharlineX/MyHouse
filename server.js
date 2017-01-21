@@ -3,5 +3,9 @@ require("babel-register")({
 		"latest",
 		"stage-0"
 	]
+	// ,
+	// plugins:[
+	// 	"transform-runtime"
+	// ]
 });
 require("./app");

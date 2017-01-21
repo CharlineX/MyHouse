@@ -15,13 +15,19 @@ module.exports = {
     // npm install --save-dev compression-webpack-plugin
     productionGzip: false,
     productionGzipExtensions: ['js', 'css']
-  },
+  },//开发环境修改，应用环境不修改
+  //客户端配置可跨域代理服务器。。服务器开可跨域请求头
   dev: {
     env: require('./dev.env'),
     port: 8080,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+        // "/api/":{
+        //     target:"http://127.0.0.1:23333",
+        //     changOrigin:true
+        // }
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

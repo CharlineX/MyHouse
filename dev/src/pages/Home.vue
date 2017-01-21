@@ -1,3 +1,25 @@
+<style scoped>
+	
+</style>
 <template>
-    <h1>首页</h1>
+    <div>
+    	<banner />
+    	<search />
+    </div>
 </template>
+<script>
+	import Banner from "../components/Banner";
+	import Search from "../components/Search";
+	export default {
+		data(){
+			return{
+
+			}
+		},
+		components:{
+			Banner,
+			Search
+		}
+
+	}
+</script>

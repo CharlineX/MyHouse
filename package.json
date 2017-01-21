@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/CharlineX/MyHouse#readme",
   "dependencies": {
+    "babel-plugin-transform-runtime": "^6.15.0",
     "babel-polyfill": "^6.20.0",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
